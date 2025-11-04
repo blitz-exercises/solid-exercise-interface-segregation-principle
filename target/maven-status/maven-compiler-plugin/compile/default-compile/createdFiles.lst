@@ -1,0 +1,6 @@
+com/example/smarthome/SmartHomeService.class
+com/example/smarthome/Camera.class
+com/example/smarthome/Device.class
+com/example/smarthome/SmartHomeController.class
+com/example/smarthome/Thermostat.class
+com/example/smarthome/Light.class

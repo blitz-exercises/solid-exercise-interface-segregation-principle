@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.smarthome.SmartHomeControllerIntegrationTest" time="0.048" tests="7" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/rensbressers/FunProjects/blitz/blitz-exercise-repos/oop-exercises/solid-exercise-interface-segregation-principle/target/test-classes:/Users/rensbressers/FunProjects/blitz/blitz-exercise-repos/oop-exercises/solid-exercise-interface-segregation-principle/target/classes:/Users/rensbressers/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.0/junit-jupiter-5.10.0.jar:/Users/rensbressers/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar:/Users/rensbressers/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/rensbressers/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar:/Users/rensbressers/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/rensbressers/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.0/junit-jupiter-params-5.10.0.jar:/Users/rensbressers/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar:/Users/rensbressers/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="001"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/rensbressers/FunProjects/blitz/blitz-exercise-repos/oop-exercises/solid-exercise-interface-segregation-principle/target/surefire/surefirebooter-20251104160416847_3.jar /Users/rensbressers/FunProjects/blitz/blitz-exercise-repos/oop-exercises/solid-exercise-interface-segregation-principle/target/surefire 2025-11-04T16-04-16_784-jvmRun1 surefire-20251104160416847_1tmp surefire_0-20251104160416847_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/rensbressers/FunProjects/blitz/blitz-exercise-repos/oop-exercises/solid-exercise-interface-segregation-principle/target/test-classes:/Users/rensbressers/FunProjects/blitz/blitz-exercise-repos/oop-exercises/solid-exercise-interface-segregation-principle/target/classes:/Users/rensbressers/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.0/junit-jupiter-5.10.0.jar:/Users/rensbressers/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar:/Users/rensbressers/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/rensbressers/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar:/Users/rensbressers/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/rensbressers/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.0/junit-jupiter-params-5.10.0.jar:/Users/rensbressers/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar:/Users/rensbressers/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/rensbressers"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-01-16"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/rensbressers/FunProjects/blitz/blitz-exercise-repos/oop-exercises/solid-exercise-interface-segregation-principle"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/rensbressers/FunProjects/blitz/blitz-exercise-repos/oop-exercises/solid-exercise-interface-segregation-principle/target/surefire/surefirebooter-20251104160416847_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="21.0.2+13-LTS-58"/>
+    <property name="user.name" value="rensbressers"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="14.6.1"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/rensbressers/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/var/folders/d7/zjvdq9557v782149xk6npp400000gn/T/"/>
+    <property name="java.version" value="21.0.2"/>
+    <property name="user.dir" value="/Users/rensbressers/FunProjects/blitz/blitz-exercise-repos/oop-exercises/solid-exercise-interface-segregation-principle"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/rensbressers/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="21.0.2+13-LTS-58"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="testNonExistentDevice" classname="com.example.smarthome.SmartHomeControllerIntegrationTest" time="0.016">
+    <system-out><![CDATA[Registered device: Device{id='light-001', name='Living Room Light', type='LIGHT'}
+Registered device: Device{id='thermo-001', name='Bedroom Thermostat', type='THERMOSTAT'}
+Registered device: Device{id='camera-001', name='Front Door Camera', type='CAMERA'}
+]]></system-out>
+  </testcase>
+  <testcase name="testLightControl" classname="com.example.smarthome.SmartHomeControllerIntegrationTest" time="0.009">
+    <system-out><![CDATA[Registered device: Device{id='light-001', name='Living Room Light', type='LIGHT'}
+Registered device: Device{id='thermo-001', name='Bedroom Thermostat', type='THERMOSTAT'}
+Registered device: Device{id='camera-001', name='Front Door Camera', type='CAMERA'}
+Light light-001 turned on
+Light light-001 brightness set to 75
+Light light-001 color set to warm white
+Light light-001 turned off
+]]></system-out>
+  </testcase>
+  <testcase name="testMultipleDevices" classname="com.example.smarthome.SmartHomeControllerIntegrationTest" time="0.001">
+    <system-out><![CDATA[Registered device: Device{id='light-001', name='Living Room Light', type='LIGHT'}
+Registered device: Device{id='thermo-001', name='Bedroom Thermostat', type='THERMOSTAT'}
+Registered device: Device{id='camera-001', name='Front Door Camera', type='CAMERA'}
+Registered device: Device{id='light-002', name='Kitchen Light', type='LIGHT'}
+Light light-001 turned on
+Light light-002 turned on
+Light light-001 brightness set to 50
+Light light-002 brightness set to 80
+]]></system-out>
+  </testcase>
+  <testcase name="testTemperatureControl" classname="com.example.smarthome.SmartHomeControllerIntegrationTest" time="0.002">
+    <system-out><![CDATA[Registered device: Device{id='light-001', name='Living Room Light', type='LIGHT'}
+Registered device: Device{id='thermo-001', name='Bedroom Thermostat', type='THERMOSTAT'}
+Registered device: Device{id='camera-001', name='Front Door Camera', type='CAMERA'}
+Thermostat thermo-001 target temperature set to 22.5°C
+]]></system-out>
+  </testcase>
+  <testcase name="testCompleteSmartHomeScenario" classname="com.example.smarthome.SmartHomeControllerIntegrationTest" time="0.001">
+    <system-out><![CDATA[Registered device: Device{id='light-001', name='Living Room Light', type='LIGHT'}
+Registered device: Device{id='thermo-001', name='Bedroom Thermostat', type='THERMOSTAT'}
+Registered device: Device{id='camera-001', name='Front Door Camera', type='CAMERA'}
+Light light-001 turned on
+Light light-001 brightness set to 60
+Thermostat thermo-001 target temperature set to 21.0°C
+Camera camera-001 took snapshot: snapshot_camera-001_1.jpg
+Light light-001 brightness set to 30
+Light light-001 color set to warm white
+Thermostat thermo-001 target temperature set to 19.0°C
+Camera camera-001 started recording
+]]></system-out>
+  </testcase>
+  <testcase name="testInvalidDeviceOperations" classname="com.example.smarthome.SmartHomeControllerIntegrationTest" time="0.001">
+    <system-out><![CDATA[Registered device: Device{id='light-001', name='Living Room Light', type='LIGHT'}
+Registered device: Device{id='thermo-001', name='Bedroom Thermostat', type='THERMOSTAT'}
+Registered device: Device{id='camera-001', name='Front Door Camera', type='CAMERA'}
+]]></system-out>
+  </testcase>
+  <testcase name="testSecurityCameraControl" classname="com.example.smarthome.SmartHomeControllerIntegrationTest" time="0.001">
+    <system-out><![CDATA[Registered device: Device{id='light-001', name='Living Room Light', type='LIGHT'}
+Registered device: Device{id='thermo-001', name='Bedroom Thermostat', type='THERMOSTAT'}
+Registered device: Device{id='camera-001', name='Front Door Camera', type='CAMERA'}
+Camera camera-001 started recording
+Camera camera-001 took snapshot: snapshot_camera-001_1.jpg
+Camera camera-001 took snapshot: snapshot_camera-001_2.jpg
+Camera camera-001 stopped recording
+]]></system-out>
+  </testcase>
+</testsuite>
