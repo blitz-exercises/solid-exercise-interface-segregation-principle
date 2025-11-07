@@ -17,6 +17,7 @@ public class SmartHomeControllerIntegrationTest {
     private Light livingRoomLight;
     private Thermostat bedroomThermostat;
     private Camera frontDoorCamera;
+    private SmartSwitch hallwaySwitch;
     
     @BeforeEach
     void setUp() {
@@ -25,10 +26,12 @@ public class SmartHomeControllerIntegrationTest {
         livingRoomLight = new Light("light-001", "Living Room Light");
         bedroomThermostat = new Thermostat("thermo-001", "Bedroom Thermostat");
         frontDoorCamera = new Camera("camera-001", "Front Door Camera");
+        hallwaySwitch = new SmartSwitch("switch-001", "Hallway Switch");
         
         controller.registerDevice(livingRoomLight);
         controller.registerDevice(bedroomThermostat);
         controller.registerDevice(frontDoorCamera);
+        controller.registerDevice(hallwaySwitch);
     }
     
     @Test
