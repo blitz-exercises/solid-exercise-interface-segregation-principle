@@ -1,7 +1,5 @@
 package com.example.smarthome;
 
-import main.java.com.example.smarthome.LightControl;
-
 /**
  * Represents a smart light device. Currently implements all methods from SmartHomeService, but only
  * needs lighting methods.

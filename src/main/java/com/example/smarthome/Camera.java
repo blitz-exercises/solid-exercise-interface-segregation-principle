@@ -1,7 +1,5 @@
 package com.example.smarthome;
 
-import main.java.com.example.smarthome.SecurityCameraControl;
-
 /**
  * Represents a smart security camera device. Currently implements all methods from
  * SmartHomeService, but only needs camera methods.
