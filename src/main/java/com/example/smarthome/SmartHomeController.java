@@ -3,137 +3,175 @@ package com.example.smarthome;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Smart home controller that manages various smart devices.
- * 
- * This implementation violates the Interface Segregation Principle by:
- * 1. Forcing all devices to implement methods they don't need
- * 2. Using type checking and exception handling to work around the design flaw
- * 3. Creating tight coupling between different device capabilities
- * 
- * Your task: Refactor this to use segregated interfaces while maintaining
- * the SmartHomeService contract.
- */
-public class SmartHomeController implements SmartHomeService {
-    
-    private final Map<String, Device> devices;
-    
+public class SmartHomeController {
+
+    private final Map<String, Device> allDevices = new HashMap<>();
+    private final Map<String, Switchable> switchables = new HashMap<>();
+    private final Map<String, LightControl> lights = new HashMap<>();
+    private final Map<String, TemperatureControl> thermostats = new HashMap<>();
+    private final Map<String, SecurityCameraControl> cameras = new HashMap<>();
+
     public SmartHomeController() {
-        this.devices = new HashMap<>();
     }
-    
-    /**
-     * Registers a device with the controller.
-     * @param device The device to register
-     */
+
     public void registerDevice(Device device) {
-        devices.put(device.getId(), device);
+        allDevices.put(device.getId(), device);
+
+        if (device instanceof Switchable) {
+            switchables.put(device.getId(), (Switchable) device);
+        }
+        if (device instanceof LightControl) {
+            lights.put(device.getId(), (LightControl) device);
+        }
+        if (device instanceof TemperatureControl) {
+            thermostats.put(device.getId(), (TemperatureControl) device);
+        }
+        if (device instanceof SecurityCameraControl) {
+            cameras.put(device.getId(), (SecurityCameraControl) device);
+        }
+
         System.out.println("Registered device: " + device);
     }
-    
-    // Lighting control methods
-    @Override
-    public void turnOnLight(String deviceId) {
-        Device device = getDevice(deviceId);
-        if (device instanceof Light) {
-            ((Light) device).turnOn();
-        } else {
-            throw new IllegalArgumentException("Device " + deviceId + " does not support lighting control");
+
+    public Map<String, Device> getAllDevices() {
+        return new HashMap<>(allDevices);
+    }
+
+    // --- Switchable Devices ---
+    public void turnOnAll() {
+        for (Switchable device : switchables.values()) {
+            device.turnOn();
         }
     }
-    
-    @Override
-    public void turnOffLight(String deviceId) {
-        Device device = getDevice(deviceId);
-        if (device instanceof Light) {
-            ((Light) device).turnOff();
-        } else {
-            throw new IllegalArgumentException("Device " + deviceId + " does not support lighting control");
+
+    public void turnOffAll() {
+        for (Switchable device : switchables.values()) {
+            device.turnOff();
         }
     }
-    
-    @Override
-    public void setBrightness(String deviceId, int brightness) {
-        Device device = getDevice(deviceId);
-        if (device instanceof Light) {
-            ((Light) device).setBrightness(brightness);
+
+    public void turnOn(String deviceId) {
+        Switchable device = switchables.get(deviceId);
+        if (device != null) {
+            device.turnOn();
+        } else if (allDevices.containsKey(deviceId)) {
+            throw new IllegalArgumentException("Device is not switchable: " + deviceId);
         } else {
-            throw new IllegalArgumentException("Device " + deviceId + " does not support brightness control");
-        }
-    }
-    
-    @Override
-    public void setColor(String deviceId, String color) {
-        Device device = getDevice(deviceId);
-        if (device instanceof Light) {
-            ((Light) device).setColor(color);
-        } else {
-            throw new IllegalArgumentException("Device " + deviceId + " does not support color control");
-        }
-    }
-    
-    // Temperature control methods
-    @Override
-    public void setTemperature(String deviceId, double temperature) {
-        Device device = getDevice(deviceId);
-        if (device instanceof Thermostat) {
-            ((Thermostat) device).setTemperature(temperature);
-        } else {
-            throw new IllegalArgumentException("Device " + deviceId + " does not support temperature control");
-        }
-    }
-    
-    @Override
-    public double getCurrentTemperature(String deviceId) {
-        Device device = getDevice(deviceId);
-        if (device instanceof Thermostat) {
-            return ((Thermostat) device).getCurrentTemperature();
-        } else {
-            throw new IllegalArgumentException("Device " + deviceId + " does not support temperature reading");
-        }
-    }
-    
-    // Security camera control methods
-    @Override
-    public void startRecording(String deviceId) {
-        Device device = getDevice(deviceId);
-        if (device instanceof Camera) {
-            ((Camera) device).startRecording();
-        } else {
-            throw new IllegalArgumentException("Device " + deviceId + " does not support recording");
-        }
-    }
-    
-    @Override
-    public void stopRecording(String deviceId) {
-        Device device = getDevice(deviceId);
-        if (device instanceof Camera) {
-            ((Camera) device).stopRecording();
-        } else {
-            throw new IllegalArgumentException("Device " + deviceId + " does not support recording");
-        }
-    }
-    
-    @Override
-    public String takeSnapshot(String deviceId) {
-        Device device = getDevice(deviceId);
-        if (device instanceof Camera) {
-            return ((Camera) device).takeSnapshot();
-        } else {
-            throw new IllegalArgumentException("Device " + deviceId + " does not support snapshots");
-        }
-    }
-    
-    private Device getDevice(String deviceId) {
-        Device device = devices.get(deviceId);
-        if (device == null) {
             throw new IllegalArgumentException("Device not found: " + deviceId);
         }
-        return device;
     }
-    
-    public Map<String, Device> getDevices() {
-        return new HashMap<>(devices);
+
+    public void turnOff(String deviceId) {
+        Switchable device = switchables.get(deviceId);
+        if (device != null) {
+            device.turnOff();
+        } else {
+            System.out.println("Device is not switchable: " + deviceId);
+        }
+    }
+
+    // --- Lights ---
+    public void setAllLightsBrightness(String deviceId, int brightness) {
+        for (LightControl light : lights.values()) {
+            light.setBrightness(deviceId, brightness);
+        }
+    }
+
+    public void setAllLightsColor(String deviceId, String color) {
+        for (LightControl light : lights.values()) {
+            light.setColor(deviceId, color);
+        }
+    }
+
+    public void setLightBrightness(String deviceId, int brightness) {
+        LightControl light = lights.get(deviceId);
+        if (light != null) {
+            light.setBrightness(deviceId ,brightness);
+        } else {
+            System.out.println("Device is not a light: " + deviceId);
+        }
+    }
+
+    public void setLightColor(String deviceId, String color) {
+        LightControl light = lights.get(deviceId);
+        if (light != null) {
+            light.setColor(deviceId ,color);
+        } else {
+            System.out.println("Device is not a light: " + deviceId);
+        }
+    }
+
+    // --- Thermostats ---
+    public void setAllTemperatures(String deviceId, double temperature) {
+        for (TemperatureControl thermostat : thermostats.values()) {
+            thermostat.setTemperature(deviceId, temperature);
+        }
+    }
+
+    public void setTemperature(String deviceId, double temperature) {
+        TemperatureControl thermostat = thermostats.get(deviceId);
+        if (thermostat != null) {
+            thermostat.setTemperature(deviceId, temperature);
+        } else if (allDevices.containsKey(deviceId)) {
+            throw new IllegalArgumentException("Device is not a thermostat: " + deviceId);
+        } else {
+            throw new IllegalArgumentException("Device not found: " + deviceId);
+        }
+    }
+
+
+    public void printCurrentTemperatures(String deviceId) {
+        for (Map.Entry<String, TemperatureControl> entry : thermostats.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue().getCurrentTemperature(deviceId) + "°C");
+        }
+    }
+
+    // --- Cameras ---
+    public void startAllCameras(String deviceId) {
+        for (SecurityCameraControl camera : cameras.values()) {
+            camera.startRecording(deviceId);
+        }
+    }
+
+    public void stopAllCameras(String deviceId) {
+        for (SecurityCameraControl camera : cameras.values()) {
+            camera.stopRecording(deviceId);
+        }
+    }
+
+    public void snapshotAllCameras(String deviceId) {
+        for (SecurityCameraControl camera : cameras.values()) {
+            camera.takeSnapshot(deviceId);
+        }
+    }
+
+    public void startCamera(String deviceId) {
+        SecurityCameraControl camera = cameras.get(deviceId);
+        if (camera != null) {
+            camera.startRecording(deviceId);
+        } else if (allDevices.containsKey(deviceId)) {
+            throw new IllegalArgumentException("Device is not a camera: " + deviceId);
+        } else {
+            throw new IllegalArgumentException("Device not found: " + deviceId);
+        }
+    }
+
+
+    public void stopCamera(String deviceId) {
+        SecurityCameraControl camera = cameras.get(deviceId);
+        if (camera != null) {
+            camera.stopRecording(deviceId);
+        } else {
+            System.out.println("Device is not a camera: " + deviceId);
+        }
+    }
+
+    public void takeSnapshot(String deviceId) {
+        SecurityCameraControl camera = cameras.get(deviceId);
+        if (camera != null) {
+            camera.takeSnapshot(deviceId);
+        } else {
+            System.out.println("Device is not a camera: " + deviceId);
+        }
     }
 }
-

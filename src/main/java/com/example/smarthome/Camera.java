@@ -4,7 +4,7 @@ package com.example.smarthome;
  * Represents a smart security camera device.
  * Currently implements all methods from SmartHomeService, but only needs camera methods.
  */
-public class Camera extends Device {
+public class Camera extends Device implements SecurityCameraControl {
     private boolean isRecording;
     private int snapshotCount;
     
@@ -15,17 +15,17 @@ public class Camera extends Device {
     }
     
     // Security camera methods (needed)
-    public void startRecording() {
+    public void startRecording(String deviceId) {
         this.isRecording = true;
         System.out.println("Camera " + getId() + " started recording");
     }
     
-    public void stopRecording() {
+    public void stopRecording(String deviceId) {
         this.isRecording = false;
         System.out.println("Camera " + getId() + " stopped recording");
     }
     
-    public String takeSnapshot() {
+    public String takeSnapshot(String deviceId) {
         snapshotCount++;
         String snapshot = "snapshot_" + getId() + "_" + snapshotCount + ".jpg";
         System.out.println("Camera " + getId() + " took snapshot: " + snapshot);
@@ -39,31 +39,4 @@ public class Camera extends Device {
     public int getSnapshotCount() {
         return snapshotCount;
     }
-    
-    // Lighting methods (not needed - violates ISP)
-    public void turnOn() {
-        throw new UnsupportedOperationException("Cameras do not support lighting control");
-    }
-    
-    public void turnOff() {
-        throw new UnsupportedOperationException("Cameras do not support lighting control");
-    }
-    
-    public void setBrightness(int brightness) {
-        throw new UnsupportedOperationException("Cameras do not support brightness control");
-    }
-    
-    public void setColor(String color) {
-        throw new UnsupportedOperationException("Cameras do not support color control");
-    }
-    
-    // Temperature methods (not needed - violates ISP)
-    public void setTemperature(double temperature) {
-        throw new UnsupportedOperationException("Cameras do not support temperature control");
-    }
-    
-    public double getCurrentTemperature() {
-        throw new UnsupportedOperationException("Cameras do not support temperature reading");
-    }
 }
-
