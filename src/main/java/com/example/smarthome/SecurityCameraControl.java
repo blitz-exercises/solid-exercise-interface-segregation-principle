@@ -1,6 +1,6 @@
 package com.example.smarthome;
 
-public interface SecurityCameraControl {
+public interface SecurityCameraControl  extends Switchable {
     void startRecording();
 
     void stopRecording();

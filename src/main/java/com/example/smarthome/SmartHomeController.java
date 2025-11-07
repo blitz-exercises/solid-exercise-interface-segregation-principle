@@ -13,7 +13,7 @@ import java.util.Map;
  * Your task: Refactor this to use segregated interfaces while maintaining the SmartHomeService
  * contract.
  */
-public class SmartHomeController implements SmartHomeService {
+public class SmartHomeController implements TemperatureControl, SecurityCameraControl, LightControl {
 
     private final Map<String, Device> devices;
 

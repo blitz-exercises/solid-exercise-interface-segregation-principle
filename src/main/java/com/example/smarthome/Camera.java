@@ -42,5 +42,19 @@ public class Camera extends Device implements SecurityCameraControl {
         return snapshotCount;
     }
 
+    @Override
+    public void turnOn() {
+        this.isRecording = true;
+        System.out.println("Camera " + getId() + " started recording");
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'turnOn'");
+    }
+
+    @Override
+    public void turnOff() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'turnOff'");
+    }
+
 }
 
