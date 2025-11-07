@@ -4,7 +4,7 @@ package com.example.smarthome;
  * Represents a smart light device.
  * Currently implements all methods from SmartHomeService, but only needs lighting methods.
  */
-public class Light extends Device {
+public class Light extends Device implements LightControl {
     private boolean isOn;
     private int brightness;
     private String color;
@@ -16,7 +16,6 @@ public class Light extends Device {
         this.color = "white";
     }
     
-    // Lighting methods (needed)
     public void turnOn() {
         this.isOn = true;
         System.out.println("Light " + getId() + " turned on");
@@ -27,7 +26,7 @@ public class Light extends Device {
         System.out.println("Light " + getId() + " turned off");
     }
     
-    public void setBrightness(int brightness) {
+    public void setBrightness(String deviceId, int brightness) {
         if (brightness < 0 || brightness > 100) {
             throw new IllegalArgumentException("Brightness must be between 0 and 100");
         }
@@ -35,7 +34,7 @@ public class Light extends Device {
         System.out.println("Light " + getId() + " brightness set to " + brightness);
     }
     
-    public void setColor(String color) {
+    public void setColor(String deviceId, String color) {
         this.color = color;
         System.out.println("Light " + getId() + " color set to " + color);
     }
@@ -50,28 +49,6 @@ public class Light extends Device {
     
     public String getColor() {
         return color;
-    }
-    
-    // Temperature methods (not needed - violates ISP)
-    public void setTemperature(double temperature) {
-        throw new UnsupportedOperationException("Lights do not support temperature control");
-    }
-    
-    public double getCurrentTemperature() {
-        throw new UnsupportedOperationException("Lights do not support temperature reading");
-    }
-    
-    // Security camera methods (not needed - violates ISP)
-    public void startRecording() {
-        throw new UnsupportedOperationException("Lights do not support recording");
-    }
-    
-    public void stopRecording() {
-        throw new UnsupportedOperationException("Lights do not support recording");
-    }
-    
-    public String takeSnapshot() {
-        throw new UnsupportedOperationException("Lights do not support snapshots");
     }
 }
 

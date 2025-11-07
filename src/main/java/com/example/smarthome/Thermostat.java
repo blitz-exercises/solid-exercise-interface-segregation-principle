@@ -4,7 +4,7 @@ package com.example.smarthome;
  * Represents a smart thermostat device.
  * Currently implements all methods from SmartHomeService, but only needs temperature methods.
  */
-public class Thermostat extends Device {
+public class Thermostat extends Device implements TemperatureControl {
     private double currentTemperature;
     private double targetTemperature;
     
@@ -15,51 +15,20 @@ public class Thermostat extends Device {
     }
     
     // Temperature methods (needed)
-    public void setTemperature(double temperature) {
+    public void setTemperature(String deviceId, double temperature) {
         this.targetTemperature = temperature;
         System.out.println("Thermostat " + getId() + " target temperature set to " + temperature + "°C");
     }
     
-    public double getCurrentTemperature() {
+    public double getCurrentTemperature(String deviceId) {
         return currentTemperature;
     }
     
-    public double getTargetTemperature() {
+    public double getTargetTemperature(String deviceId) {
         return targetTemperature;
     }
     
-    public void setCurrentTemperature(double currentTemperature) {
+    public void setCurrentTemperature(String deviceId, double currentTemperature) {
         this.currentTemperature = currentTemperature;
     }
-    
-    // Lighting methods (not needed - violates ISP)
-    public void turnOn() {
-        throw new UnsupportedOperationException("Thermostats do not support lighting control");
-    }
-    
-    public void turnOff() {
-        throw new UnsupportedOperationException("Thermostats do not support lighting control");
-    }
-    
-    public void setBrightness(int brightness) {
-        throw new UnsupportedOperationException("Thermostats do not support brightness control");
-    }
-    
-    public void setColor(String color) {
-        throw new UnsupportedOperationException("Thermostats do not support color control");
-    }
-    
-    // Security camera methods (not needed - violates ISP)
-    public void startRecording() {
-        throw new UnsupportedOperationException("Thermostats do not support recording");
-    }
-    
-    public void stopRecording() {
-        throw new UnsupportedOperationException("Thermostats do not support recording");
-    }
-    
-    public String takeSnapshot() {
-        throw new UnsupportedOperationException("Thermostats do not support snapshots");
-    }
 }
-
